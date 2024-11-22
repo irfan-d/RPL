@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+</head>
+<body>    
+  
+  <h1> Index Notes</h1>
+  <a href="{% url 'note.add' %}">Tambah Notes</a>
+  <hr>
+  
+    <table border="1">
+      <tr>
+        
+        <th>Mata Kuliah</th>
+        <th>Deskripsi</th>
+        <th>Tenggat</th>
+        <th colspan="2">Aksi</th>
+        
+      </tr>
+      
+      {% if notes_list %}
+        {% for catat in notes_list %}
+      
+          <tr>
+            <td>{{ catat.makul }}</td>
+            <td>{{ catat.deskripsi }}</td>
+            <td>{{ catat.tenggat }}</td>
+            <td> <a href="{% url 'note.edit' catat.id %}">Edit</a></td>
+            <td><a onclick="return confirm('Hapus {{catat.makul}}?')" href="{% url 'note.delete' catat.id %}">Hapus</a></td>
+            </tr>  
+          </tr>  
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="4">Tidak ada tugas</td>
+        </tr>
+      {% endif %}
+    </table>
+</body>
+</html>

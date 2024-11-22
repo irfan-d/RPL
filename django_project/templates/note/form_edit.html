@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDIT</title>
+</head>
+<body>
+  <form action="{% url 'note.update' id %}" method="post">
+    {% csrf_token %}
+
+    <label for="makul">Note tugas</label>
+    <br>
+    <input name="makul" type="text" value="{{makul}}">
+    <br>
+    <label for="deskripsi">Deskripsi tugas</label>
+    <br>
+    <input name="deskripsi" type="text" value="{{deskripsi}}">
+    <br>
+    <label for="tenggat">Tenggat</label>
+    <br>
+    {{catat.tenggat.date}}
+    <input name="tenggat" type="date" value="{{tenggat}}">
+    <hr>
+
+    <input type="submit" value="Simpan">
+  </form>
+  <a href="{% url 'note.index' %}">Kembali</a>
+</body>
+</html>
